@@ -594,10 +594,31 @@
     <div class="card">
         <h3>Get In Touch</h3>
         <p>Interested in quantum computing, AI, or futuristic tech? Let's collaborate on something amazing.</p>
-        <a href="mailto:pavan.trippintown@gmail.com?subject=Quantum%20Collaboration&body=Hello%20Pavan," class="cyber-button">Send Quantum Message</a>
+        
+        <!-- Primary mailto link -->
+        <a href="mailto:pavan.trippintown@gmail.com?subject=Quantum%20Collaboration%20Request&body=Hello%20Pavan,%0A%0AI%20would%20like%20to%20discuss..." 
+           class="cyber-button" 
+           id="mailLink">
+            Send Quantum Message
+        </a>
     </div>
 </section>
-    
+
+<script>
+    // Fallback function if the mailto doesn't work
+    function handleMailClick(e) {
+        // Check if mailto failed (this will execute only if the mailto was blocked)
+        if (!e.defaultPrevented) {
+            // Alternative action
+            alert('Please email me at pavan.trippintown@gmail.com');
+            // Or copy to clipboard
+            navigator.clipboard.writeText('pavan.trippintown@gmail.com');
+        }
+    }
+
+    // Attach the event listener to our link
+    document.getElementById('mailLink').addEventListener('click', handleMailClick);
+</script>
     <footer>
         <div class="social-links">
             <a href="https://github.com/Pavantrippintown" target="_blank" aria-label="GitHub">
