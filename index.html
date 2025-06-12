@@ -268,11 +268,13 @@
         .social-links a {
             color: white;
             font-size: 1.5rem;
-            transition: color 0.3s;
+            transition: all 0.3s;
         }
         
         .social-links a:hover {
             color: var(--neon-blue);
+            text-shadow: 0 0 10px var(--neon-blue);
+            transform: scale(1.2);
         }
         
         /* Particle background */
@@ -322,6 +324,9 @@
                     <li><a href="#skills">Skills</a></li>
                     <li><a href="#projects">Projects</a></li>
                     <li><a href="#contact">Contact</a></li>
+                    <!-- Added GitHub/LinkedIn to navigation -->
+                    <li><a href="https://github.com/PavanKumarP" target="_blank">GitHub</a></li>
+                    <li><a href="https://linkedin.com/in/pavankumarp" target="_blank">LinkedIn</a></li>
                 </ul>
             </nav>
         </div>
@@ -330,7 +335,7 @@
     <section class="hero">
         <h1>QUANTUM DEVELOPER</h1>
         <p class="typewriter">Building the future with quantum algorithms and neural networks...</p>
-        <button class="cyber-button">Initiate Connection</button>
+        <button class="cyber-button" onclick="window.location.href='#contact'">Initiate Connection</button>
     </section>
     
     <section id="about" class="grid-section">
@@ -418,16 +423,26 @@
         <div class="card">
             <h3>Get In Touch</h3>
             <p>Interested in quantum computing, AI, or futuristic tech? Let's collaborate on something amazing.</p>
-            <button class="cyber-button" style="margin-top: 1rem;">Send Quantum Message</button>
+            <button class="cyber-button" onclick="window.location.href='mailto:pavan.kumar@example.com'">Send Quantum Message</button>
         </div>
     </section>
     
     <footer>
         <div class="social-links">
-            <a href="#"><i class="fab fa-https://github.com/Pavantrippintown"></i></a>
-            <a href="#"><i class="fab fa-https://www.linkedin.com/in/pavan-kumar-p-741041169/"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-medium"></i></a>
+            <!-- Updated with your GitHub and LinkedIn -->
+            <a href="https://github.com/PavanKumarP" target="_blank" aria-label="GitHub">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="https://linkedin.com/in/pavankumarp" target="_blank" aria-label="LinkedIn">
+                <i class="fab fa-linkedin"></i>
+            </a>
+            <!-- Optional additional links -->
+            <a href="https://twitter.com/YourHandle" target="_blank" aria-label="Twitter">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="https://medium.com/@YourHandle" target="_blank" aria-label="Medium">
+                <i class="fab fa-medium"></i>
+            </a>
         </div>
         <p>© 2023 Pavan Kumar P. All rights reserved.</p>
         <p>Designed with quantum particles</p>
@@ -576,22 +591,6 @@
         }
 
         updateTypewriter();
-
-        // Cyber button effect
-        document.querySelectorAll('.cyber-button').forEach(button => {
-            button.addEventListener('click', function() {
-                this.classList.add('clicked');
-                setTimeout(() => {
-                    this.classList.remove('clicked');
-                }, 300);
-                
-                if (this.textContent === 'Initiate Connection') {
-                    window.location.href = '#contact';
-                } else if (this.textContent === 'Send Quantum Message') {
-                    window.location.href = 'mailto:your-email@domain.com';
-                }
-            });
-        });
 
         // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
