@@ -251,6 +251,59 @@
             font-size: 0.8rem;
         }
         
+        /* New styles for certifications section */
+        .certification-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+        
+        .certification-item {
+            background: rgba(255, 255, 255, 0.05);
+            border-left: 3px solid var(--neon-pink);
+            padding: 1rem;
+            transition: all 0.3s;
+        }
+        
+        .certification-item:hover {
+            transform: translateX(5px);
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .certification-item h4 {
+            color: var(--neon-blue);
+            margin-bottom: 0.5rem;
+        }
+        
+        .certification-item p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        .certification-item .date {
+            color: var(--neon-purple);
+            font-size: 0.8rem;
+            margin-top: 0.5rem;
+        }
+        
+        .download-link {
+            display: inline-block;
+            margin-top: 0.5rem;
+            color: var(--neon-blue);
+            text-decoration: none;
+            font-size: 0.8rem;
+            transition: all 0.3s;
+        }
+        
+        .download-link:hover {
+            text-shadow: 0 0 5px var(--neon-blue);
+        }
+        
+        .download-link i {
+            margin-right: 0.3rem;
+        }
+        
         footer {
             text-align: center;
             padding: 2rem;
@@ -277,7 +330,6 @@
             transform: scale(1.2);
         }
         
-        /* Particle background */
         .particles {
             position: fixed;
             top: 0;
@@ -287,7 +339,6 @@
             z-index: -1;
         }
         
-        /* Responsive */
         @media (max-width: 768px) {
             .header-grid {
                 grid-template-columns: 1fr;
@@ -297,6 +348,7 @@
             nav ul {
                 justify-content: center;
                 margin-top: 1rem;
+                flex-wrap: wrap;
             }
             
             .hero h1 {
@@ -305,6 +357,10 @@
             
             .hero p {
                 font-size: 1.2rem;
+            }
+            
+            .certification-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -322,9 +378,11 @@
                 <ul>
                     <li><a href="#about">About</a></li>
                     <li><a href="#skills">Skills</a></li>
+                    <li><a href="#certifications">Certifications</a></li>
+                    <li><a href="#internships">Internships</a></li>
+                    <li><a href="#recognitions">Awards</a></li>
                     <li><a href="#projects">Projects</a></li>
                     <li><a href="#contact">Contact</a></li>
-                    <!-- Added GitHub/LinkedIn to navigation -->
                     <li><a href="https://github.com/Pavantrippintown" target="_blank">GitHub</a></li>
                     <li><a href="https://www.linkedin.com/in/pavan-kumar-p-741041169/" target="_blank">LinkedIn</a></li>
                 </ul>
@@ -389,6 +447,119 @@
         </div>
     </section>
     
+    <!-- Certifications Section -->
+    <section id="certifications" class="grid-section">
+        <div class="card">
+            <h3>Certifications</h3>
+            <div class="certification-grid">
+                <div class="certification-item">
+                    <h4>Quantum Computing Fundamentals</h4>
+                    <p>IBM Quantum Challenge</p>
+                    <span class="date">June 2023</span>
+                    <a href="path/to/ibm-quantum-cert.pdf" class="download-link" download>
+                        <i class="fas fa-download"></i> Download Certificate
+                    </a>
+                </div>
+                <div class="certification-item">
+                    <h4>Advanced Python Programming</h4>
+                    <p>Coursera - University of Michigan</p>
+                    <span class="date">March 2023</span>
+                    <a href="path/to/python-cert.pdf" class="download-link" download>
+                        <i class="fas fa-download"></i> Download Certificate
+                    </a>
+                </div>
+                <div class="certification-item">
+                    <h4>AWS Certified Developer</h4>
+                    <p>Amazon Web Services</p>
+                    <span class="date">January 2023</span>
+                    <a href="path/to/aws-cert.pdf" class="download-link" download>
+                        <i class="fas fa-download"></i> Download Certificate
+                    </a>
+                </div>
+                <div class="certification-item">
+                    <h4>Machine Learning Specialization</h4>
+                    <p>Stanford University (Coursera)</p>
+                    <span class="date">November 2022</span>
+                    <a href="path/to/ml-cert.pdf" class="download-link" download>
+                        <i class="fas fa-download"></i> Download Certificate
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Internships Section -->
+    <section id="internships" class="grid-section">
+        <div class="card">
+            <h3>Internships</h3>
+            <div class="certification-grid">
+                <div class="certification-item">
+                    <h4>Quantum Software Developer Intern</h4>
+                    <p>QuantumTech Solutions</p>
+                    <span class="date">Summer 2022</span>
+                    <p>Developed quantum algorithms for optimization problems and assisted in creating quantum simulation tools.</p>
+                    <a href="path/to/quantumtech-internship.pdf" class="download-link" download>
+                        <i class="fas fa-download"></i> Certificate
+                    </a>
+                </div>
+                <div class="certification-item">
+                    <h4>AI Research Intern</h4>
+                    <p>NeuroAI Labs</p>
+                    <span class="date">Winter 2021</span>
+                    <p>Researched neural network architectures for quantum state classification.</p>
+                    <a href="path/to/neuroai-internship.pdf" class="download-link" download>
+                        <i class="fas fa-download"></i> Certificate
+                    </a>
+                </div>
+                <div class="certification-item">
+                    <h4>Cloud Computing Intern</h4>
+                    <p>Nebula Systems</p>
+                    <span class="date">Summer 2020</span>
+                    <p>Implemented cloud infrastructure solutions for distributed computing applications.</p>
+                    <a href="path/to/nebula-internship.pdf" class="download-link" download>
+                        <i class="fas fa-download"></i> Certificate
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Recognitions Section -->
+    <section id="recognitions" class="grid-section">
+        <div class="card">
+            <h3>Recognitions & Awards</h3>
+            <div class="certification-grid">
+                <div class="certification-item">
+                    <h4>Letter of Appreciation</h4>
+                    <p>College of Engineering</p>
+                    <span class="date">May 2022</span>
+                    <p>Awarded for outstanding contribution to quantum computing research at university level.</p>
+                    <a href="path/to/appreciation-letter.pdf" class="download-link" download>
+                        <i class="fas fa-download"></i> View Letter
+                    </a>
+                </div>
+                <div class="certification-item">
+                    <h4>Best Project Award</h4>
+                    <p>Tech Symposium 2021</p>
+                    <span class="date">December 2021</span>
+                    <p>Awarded for "Quantum Neural Network Implementation" project.</p>
+                    <a href="path/to/best-project-award.pdf" class="download-link" download>
+                        <i class="fas fa-download"></i> View Certificate
+                    </a>
+                </div>
+                <div class="certification-item">
+                    <h4>Academic Excellence Award</h4>
+                    <p>Department of Computer Science</p>
+                    <span class="date">April 2021</span>
+                    <p>Recognized for top performance in advanced algorithms and quantum computing courses.</p>
+                    <a href="path/to/excellence-award.pdf" class="download-link" download>
+                        <i class="fas fa-download"></i> View Certificate
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
     <section id="projects" class="grid-section">
         <div class="card">
             <h3>Quantum Neural Net</h3>
@@ -429,14 +600,12 @@
     
     <footer>
         <div class="social-links">
-            <!-- Updated with your GitHub and LinkedIn -->
             <a href="https://github.com/Pavantrippintown" target="_blank" aria-label="GitHub">
                 <i class="fab fa-github"></i>
             </a>
             <a href="https://www.linkedin.com/in/pavan-kumar-p-741041169/" target="_blank" aria-label="LinkedIn">
                 <i class="fab fa-linkedin"></i>
             </a>
-            <!-- Optional additional links -->
             <a href="https://twitter.com/YourHandle" target="_blank" aria-label="Twitter">
                 <i class="fab fa-twitter"></i>
             </a>
