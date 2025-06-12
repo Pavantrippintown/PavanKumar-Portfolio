@@ -1,1 +1,607 @@
-# Professional_Portfolio
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pavan Kumar P | Quantum Developer</title>
+    <style>
+        :root {
+            --neon-blue: #0ff0fc;
+            --neon-pink: #ff2a6d;
+            --neon-purple: #d300c5;
+            --dark-bg: #0d0221;
+            --darker-bg: #080116;
+            --text-glow: 0 0 10px var(--neon-blue);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Rajdhani', 'Courier New', monospace;
+        }
+        
+        body {
+            background-color: var(--dark-bg);
+            color: white;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 25% 25%, rgba(255,42,109,0.15) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(13,240,252,0.15) 0%, transparent 50%);
+        }
+        
+        .cyber-glitch {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 255, 255, 0.2),
+                rgba(0, 255, 255, 0.2) 1px,
+                transparent 1px,
+                transparent 3px
+            );
+            pointer-events: none;
+            z-index: 9999;
+            mix-blend-mode: overlay;
+            animation: glitch 5s infinite alternate;
+            opacity: 0.1;
+        }
+        
+        @keyframes glitch {
+            0%, 100% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(-2px, -2px); }
+            60% { transform: translate(2px, 2px); }
+            80% { transform: translate(2px, -2px); }
+        }
+        
+        header {
+            padding: 2rem;
+            position: relative;
+            border-bottom: 1px solid var(--neon-blue);
+            box-shadow: 0 0 20px var(--neon-blue);
+        }
+        
+        .header-grid {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, var(--neon-pink), var(--neon-blue));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: var(--text-glow);
+            animation: pulse 2s infinite alternate;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 0.8; }
+            100% { opacity: 1; text-shadow: 0 0 15px var(--neon-blue); }
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: flex-end;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--neon-blue);
+            transition: width 0.3s;
+        }
+        
+        nav a:hover::after {
+            width: 100%;
+        }
+        
+        .hero {
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 2rem;
+            position: relative;
+        }
+        
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(90deg, var(--neon-blue), var(--neon-pink));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: var(--text-glow);
+        }
+        
+        .hero p {
+            font-size: 1.5rem;
+            max-width: 800px;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        
+        .typewriter {
+            border-right: 3px solid var(--neon-blue);
+            white-space: nowrap;
+            overflow: hidden;
+            animation: 
+                blink-caret 0.75s step-end infinite,
+                typing 3.5s steps(40, end);
+        }
+        
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: var(--neon-blue); }
+        }
+        
+        .cyber-button {
+            background: transparent;
+            color: var(--neon-blue);
+            border: 2px solid var(--neon-blue);
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s;
+            box-shadow: 0 0 10px var(--neon-blue);
+            z-index: 1;
+        }
+        
+        .cyber-button:hover {
+            color: var(--dark-bg);
+            box-shadow: 0 0 20px var(--neon-blue);
+        }
+        
+        .cyber-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, var(--neon-blue), transparent);
+            transition: 0.5s;
+            z-index: -1;
+        }
+        
+        .cyber-button:hover::before {
+            left: 100%;
+        }
+        
+        .grid-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 4rem 2rem;
+        }
+        
+        .card {
+            background: rgba(13, 2, 33, 0.7);
+            border: 1px solid var(--neon-purple);
+            border-radius: 5px;
+            padding: 2rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(255, 42, 109, 0.3);
+        }
+        
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--neon-pink), var(--neon-blue));
+        }
+        
+        .card h3 {
+            color: var(--neon-blue);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        
+        .tech-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid var(--neon-purple);
+            margin-top: 4rem;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 1rem 0;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: var(--neon-blue);
+        }
+        
+        /* Particle background */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            nav ul {
+                justify-content: center;
+                margin-top: 1rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="cyber-glitch"></div>
+    <div class="particles" id="particles-js"></div>
+    
+    <header>
+        <div class="header-grid">
+            <div class="logo">PavanKumarP</div>
+            <nav>
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <section class="hero">
+        <h1>QUANTUM DEVELOPER</h1>
+        <p class="typewriter">Building the future with quantum algorithms and neural networks...</p>
+        <button class="cyber-button">Initiate Connection</button>
+    </section>
+    
+    <section id="about" class="grid-section">
+        <div class="card">
+            <h3>About Me</h3>
+            <p>Full-stack developer specializing in quantum-resistant systems and AI integration. Passionate about pushing the boundaries of what's possible with code.</p>
+            <p>When not developing, I research quantum computing applications and contribute to open-source projects.</p>
+        </div>
+        <div class="card">
+            <h3>Experience</h3>
+            <p><strong>Lead Quantum Developer</strong> | NeuroTech (2023-Present)</p>
+            <p>Developing hybrid quantum-classical algorithms for machine learning applications.</p>
+            <p><strong>Senior Cloud Architect</strong> | Nebula Systems (2020-2023)</p>
+            <p>Designed scalable cloud infrastructure for AI workloads.</p>
+        </div>
+    </section>
+    
+    <section id="skills" class="grid-section">
+        <div class="card">
+            <h3>Core Technologies</h3>
+            <div class="tech-stack">
+                <span class="tech-item">Quantum Computing</span>
+                <span class="tech-item">Q#</span>
+                <span class="tech-item">Python</span>
+                <span class="tech-item">Java</span>
+                <span class="tech-item">Rust</span>
+                <span class="tech-item">TypeScript</span>
+            </div>
+        </div>
+        <div class="card">
+            <h3>Frameworks</h3>
+            <div class="tech-stack">
+                <span class="tech-item">Qiskit</span>
+                <span class="tech-item">TensorFlow</span>
+                <span class="tech-item">React</span>
+                <span class="tech-item">Next.js</span>
+                <span class="tech-item">Spring</span>
+                <span class="tech-item">Node.js</span>
+            </div>
+        </div>
+        <div class="card">
+            <h3>Infrastructure</h3>
+            <div class="tech-stack">
+                <span class="tech-item">AWS</span>
+                <span class="tech-item">Azure Quantum</span>
+                <span class="tech-item">Kubernetes</span>
+                <span class="tech-item">Docker</span>
+                <span class="tech-item">Terraform</span>
+                <span class="tech-item">Ansible</span>
+            </div>
+        </div>
+    </section>
+    
+    <section id="projects" class="grid-section">
+        <div class="card">
+            <h3>Quantum Neural Net</h3>
+            <p>Hybrid quantum-classical neural network that demonstrates quantum advantage in pattern recognition.</p>
+            <div class="tech-stack">
+                <span class="tech-item">Q#</span>
+                <span class="tech-item">Python</span>
+                <span class="tech-item">Qiskit</span>
+            </div>
+        </div>
+        <div class="card">
+            <h3>Blockchain AI Oracle</h3>
+            <p>Decentralized oracle service that uses machine learning to verify and process external data for smart contracts.</p>
+            <div class="tech-stack">
+                <span class="tech-item">Solidity</span>
+                <span class="tech-item">TensorFlow</span>
+                <span class="tech-item">Node.js</span>
+            </div>
+        </div>
+        <div class="card">
+            <h3>Cloud Quantum Simulator</h3>
+            <p>Distributed quantum circuit simulator that runs on Kubernetes clusters for high-performance simulation.</p>
+            <div class="tech-stack">
+                <span class="tech-item">Go</span>
+                <span class="tech-item">Kubernetes</span>
+                <span class="tech-item">AWS</span>
+            </div>
+        </div>
+    </section>
+    
+    <section id="contact" class="grid-section">
+        <div class="card">
+            <h3>Get In Touch</h3>
+            <p>Interested in quantum computing, AI, or futuristic tech? Let's collaborate on something amazing.</p>
+            <button class="cyber-button" style="margin-top: 1rem;">Send Quantum Message</button>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-github"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-medium"></i></a>
+        </div>
+        <p>© 2023 Pavan Kumar P. All rights reserved.</p>
+        <p>Designed with quantum particles</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        // Initialize particles.js
+        particlesJS("particles-js", {
+            "particles": {
+                "number": {
+                    "value": 80,
+                    "density": {
+                        "enable": true,
+                        "value_area": 800
+                    }
+                },
+                "color": {
+                    "value": "#0ff0fc"
+                },
+                "shape": {
+                    "type": "circle",
+                    "stroke": {
+                        "width": 0,
+                        "color": "#000000"
+                    },
+                    "polygon": {
+                        "nb_sides": 5
+                    }
+                },
+                "opacity": {
+                    "value": 0.5,
+                    "random": false,
+                    "anim": {
+                        "enable": false,
+                        "speed": 1,
+                        "opacity_min": 0.1,
+                        "sync": false
+                    }
+                },
+                "size": {
+                    "value": 3,
+                    "random": true,
+                    "anim": {
+                        "enable": false,
+                        "speed": 40,
+                        "size_min": 0.1,
+                        "sync": false
+                    }
+                },
+                "line_linked": {
+                    "enable": true,
+                    "distance": 150,
+                    "color": "#0ff0fc",
+                    "opacity": 0.4,
+                    "width": 1
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 2,
+                    "direction": "none",
+                    "random": false,
+                    "straight": false,
+                    "out_mode": "out",
+                    "bounce": false,
+                    "attract": {
+                        "enable": false,
+                        "rotateX": 600,
+                        "rotateY": 1200
+                    }
+                }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": {
+                        "enable": true,
+                        "mode": "grab"
+                    },
+                    "onclick": {
+                        "enable": true,
+                        "mode": "push"
+                    },
+                    "resize": true
+                },
+                "modes": {
+                    "grab": {
+                        "distance": 140,
+                        "line_linked": {
+                            "opacity": 1
+                        }
+                    },
+                    "bubble": {
+                        "distance": 400,
+                        "size": 40,
+                        "duration": 2,
+                        "opacity": 8,
+                        "speed": 3
+                    },
+                    "repulse": {
+                        "distance": 200,
+                        "duration": 0.4
+                    },
+                    "push": {
+                        "particles_nb": 4
+                    },
+                    "remove": {
+                        "particles_nb": 2
+                    }
+                }
+            },
+            "retina_detect": true
+        });
+
+        // Typewriter effect
+        const phrases = [
+            "Building the future with quantum algorithms and neural networks...",
+            "Developing quantum-resistant cryptographic systems...",
+            "Creating AI that understands quantum mechanics...",
+            "Bridging classical and quantum computing...",
+            "Pushing the boundaries of computational physics..."
+        ];
+        let currentPhrase = 0;
+        const typewriterElement = document.querySelector('.typewriter');
+
+        function updateTypewriter() {
+            typewriterElement.textContent = '';
+            typewriterElement.style.animation = 'none';
+            void typewriterElement.offsetWidth; // Trigger reflow
+            typewriterElement.style.animation = null;
+            
+            const phrase = phrases[currentPhrase];
+            let i = 0;
+            const typing = setInterval(() => {
+                if (i < phrase.length) {
+                    typewriterElement.textContent += phrase.charAt(i);
+                    i++;
+                } else {
+                    clearInterval(typing);
+                    setTimeout(() => {
+                        currentPhrase = (currentPhrase + 1) % phrases.length;
+                        updateTypewriter();
+                    }, 3000);
+                }
+            }, 100);
+        }
+
+        updateTypewriter();
+
+        // Cyber button effect
+        document.querySelectorAll('.cyber-button').forEach(button => {
+            button.addEventListener('click', function() {
+                this.classList.add('clicked');
+                setTimeout(() => {
+                    this.classList.remove('clicked');
+                }, 300);
+                
+                if (this.textContent === 'Initiate Connection') {
+                    window.location.href = '#contact';
+                } else if (this.textContent === 'Send Quantum Message') {
+                    window.location.href = 'mailto:your-email@domain.com';
+                }
+            });
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
