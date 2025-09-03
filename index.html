@@ -135,16 +135,15 @@
             overflow: hidden;
         }
         
-        #video-background {
+        #youtube-background {
             position: absolute;
             top: 50%;
             left: 50%;
-            min-width: 100%;
-            min-height: 100%;
-            width: auto;
-            height: auto;
-            transform: translateX(-50%) translateY(-50%);
-            object-fit: cover;
+            width: 100vw;
+            height: 56.25vw; /* 100 * 9 / 16 */
+            min-height: 100vh;
+            min-width: 177.77vh; /* 16/9 * 100 */
+            transform: translate(-50%, -50%);
         }
         
         .video-overlay {
@@ -154,6 +153,7 @@
             width: 100%;
             height: 100%;
             background: rgba(10, 10, 10, 0.7);
+            z-index: 1;
         }
         
         .hero-content {
@@ -739,10 +739,7 @@
     <!-- Hero Section -->
     <section class="hero">
         <div id="video-container">
-            <video id="video-background" autoplay muted loop playsinline>
-                <!-- Replace with your black hole video file -->
-                <source src="black1.mp4" type="video/mp4">
-            </video>
+            <div id="youtube-background"></div>
             <div class="video-overlay"></div>
         </div>
         <div class="container">
@@ -764,7 +761,8 @@
             <div class="about-content">
                 <div class="about-text">
                     <h3>Hello! I'm Pavan Kumar P</h3>
-A versatile hands-on engineer with a dual passion for backend DevOps and front-end creativity. I specialize in building robust CI/CD pipelines and containerized ecosystems (Docker, AWS, OpenShift) to accelerate development cycles and ensure reliability. Beyond infrastructure, I love applying my software engineering skills to design and develop engaging websites. Fueled by a curiosity for science and continuous learning. <p>My goal is to help organizations streamline their development processes, reduce time-to-market, and improve system reliability through modern DevOps practices.</p>
+                    <p>A versatile hands-on engineer with a dual passion for backend DevOps and front-end creativity. I specialize in building robust CI/CD pipelines and containerized ecosystems (Docker, AWS, OpenShift) to accelerate development cycles and ensure reliability. Beyond infrastructure, I love applying my software engineering skills to design and develop engaging websites. Fueled by a curiosity for science and continuous learning.</p>
+                    <p>My goal is to help organizations streamline their development processes, reduce time-to-market, and improve system reliability through modern DevOps practices.</p>
                     <a href="#contact" class="btn">Let's Connect</a>
                 </div>
                 <div class="about-image">
@@ -967,14 +965,14 @@ A versatile hands-on engineer with a dual passion for backend DevOps and front-e
                     </div>
                 </div>
                 <div class="contact-form">
-    <form action="https://formspree.io/f/xzzajppo" method="POST" id="contact-form">
-        <input type="text" name="name" placeholder="Your Name" required>
-        <input type="email" name="email" placeholder="Your Email" required>
-        <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
-        <button type="submit" class="btn">Send Message</button>
-        <div id="form-status" style="margin-top: 20px; display: none;"></div>
-    </form>
-</div>
+                    <form action="https://formspree.io/f/xzzajppo" method="POST" id="contact-form">
+                        <input type="text" name="name" placeholder="Your Name" required>
+                        <input type="email" name="email" placeholder="Your Email" required>
+                        <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+                        <button type="submit" class="btn">Send Message</button>
+                        <div id="form-status" style="margin-top: 20px; display: none;"></div>
+                    </form>
+                </div>
             </div>
         </div>
     </section>
@@ -987,6 +985,49 @@ A versatile hands-on engineer with a dual passion for backend DevOps and front-e
     </footer>
 
     <script>
+        // YouTube API for background video
+        var tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/iframe_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+        var player;
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('youtube-background', {
+                height: '100%',
+                width: '100%',
+                videoId: 'wk5sPRboFpg',
+                playerVars: {
+                    'autoplay': 1,
+                    'controls': 0,
+                    'showinfo': 0,
+                    'rel': 0,
+                    'loop': 1,
+                    'playlist': 'wk5sPRboFpg', // Required for loop to work
+                    'mute': 1,
+                    'modestbranding': 1,
+                    'playsinline': 1
+                },
+                events: {
+                    'onReady': onPlayerReady,
+                    'onStateChange': onPlayerStateChange
+                }
+            });
+        }
+
+        function onPlayerReady(event) {
+            event.target.playVideo();
+            // Set volume to 0 (mute)
+            event.target.setVolume(0);
+        }
+
+        function onPlayerStateChange(event) {
+            // When video ends, restart it (backup for loop)
+            if(event.data === YT.PlayerState.ENDED) {
+                player.playVideo();
+            }
+        }
+
         // Scroll animations
         document.addEventListener('DOMContentLoaded', function() {
             const observer = new IntersectionObserver((entries) => {
